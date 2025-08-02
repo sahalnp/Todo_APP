@@ -1,37 +1,39 @@
-import { useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+// import { useCallback } from "react";
+// import { collection, query, where, getDocs } from "firebase/firestore";
+// import { db } from "../firebase/config";
+// export const getDetails = async (email) => {
+//     try {
+//         const q = query(collection(db, "users"), where("email", "==", email));
+//         const snapshot = await getDocs(q);
 
-const navigate = useNavigate();
-export const goSignup = useCallback(() => {
-    navigate("/signup");
-}, [navigate]);
-export const check = useCallback(
-    (email, password, name) => {
-        const user = getDetails(email);
+//         if (snapshot.empty) {
+//             return null;
+//         }
 
-        if (!user) {
-            alert("You don't have account,Please sign up");
-            goSignup();
-            return false;
-        }
+//         const doc = snapshot.docs[0];
 
-        if (user.email !== email) {
-            alert("Email not found");
-            return false;
-        }
+//         return { id: doc.id, ...doc.data() };
+//     } catch (err) {
+//         return null;
+//     }
+// };
 
-        if (user.name !== name) {
-            alert("Incorrect name");
-            return false;
-        }
+// export const useCheck = () => {
+//     return useCallback(async (email, password) => {
+//         const user = await getDetails(email);
 
-        if (user.pass !== password) {
-            alert("Incorrect password");
-            return false;
-        }
+//         if (!user) {
+//             return "You don't have an account, Please sign up";
+//         }
 
-        setUser(user);
-        return true;
-    },
-    [goSignup]
-);
+//         if (user.email !== email) {
+//             return "Email not found";
+//         }
+
+//         if (user.password !== password) {
+//             return "Incorrect password";
+//         }
+
+//         return true;
+//     }, []);
+// };
